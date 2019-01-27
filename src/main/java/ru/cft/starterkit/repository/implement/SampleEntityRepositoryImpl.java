@@ -7,7 +7,6 @@ import ru.cft.starterkit.entity.SampleEntity;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.SampleEntityRepository;
 
-import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -41,11 +40,6 @@ public class SampleEntityRepositoryImpl implements SampleEntityRepository {
 
         log.info("Returned sample entity with id '{}' from storage: {}", id, sampleEntity);
         return sampleEntity;
-    }
-
-    @Override
-    public Collection<SampleEntity> get() {
-        return storage.values();
     }
 
 }

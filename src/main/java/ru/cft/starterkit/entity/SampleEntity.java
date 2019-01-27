@@ -9,14 +9,6 @@ public class SampleEntity {
 
     private Long id;
 
-    public SampleEntity() {
-    }
-
-    public SampleEntity(String foo, Double bar) {
-        this.foo = foo;
-        this.bar = bar;
-    }
-
     private String foo;
 
     private Double bar;
