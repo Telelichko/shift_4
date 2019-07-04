@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class WorkerEntity {
-    private Integer id;
+    private Long id;
     private String workerName;
     private String category;
     private Integer phoneNumber;
@@ -17,10 +17,10 @@ public class WorkerEntity {
     @JsonIgnore
     private UUID baz;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -86,5 +86,7 @@ public class WorkerEntity {
     }
 
 
-
+//    public Long getId(long incrementAndGet) { // Удалить при необходимости
+//        return null;
+//    }
 }
