@@ -14,5 +14,7 @@ public interface WorkerEntityService {
 
     Collection<WorkerEntity> get();
 
+    Collection<WorkerEntity> delete();
+
     WorkerEntity add(WorkerEntity workerEntity);
 }

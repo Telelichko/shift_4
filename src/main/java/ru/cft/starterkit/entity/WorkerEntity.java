@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class WorkerEntity {
-    private Long id;
+    private Integer id;
     private String workerName;
     private String category;
     private Integer phoneNumber;
@@ -17,12 +17,10 @@ public class WorkerEntity {
     @JsonIgnore
     private UUID baz;
 
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
-
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -86,4 +84,7 @@ public class WorkerEntity {
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(baz, that.baz);
     }
+
+
+
 }

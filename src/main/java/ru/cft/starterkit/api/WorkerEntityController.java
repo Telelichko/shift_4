@@ -27,6 +27,7 @@ public class WorkerEntityController {
             consumes = "application/json", //x-www-form-urlencoded", 1 действ
             produces = "application/json"
     )
+
     public WorkerEntity add(@RequestBody WorkerEntity workerEntity)   // Что приходит от протокола Ltqcnd 1_2
              {
         return workerEntityService.add(workerEntity);
@@ -44,5 +45,9 @@ public class WorkerEntityController {
     @RequestMapping(method = RequestMethod.GET, path = "/workers", produces = "application/json")
     public Collection<WorkerEntity> get(){
         return workerEntityService.get();}
+
+    @RequestMapping(method = RequestMethod.DELETE, path = "worker/{id}", produces = "application/json")
+    public WorkerEntity delete(){
+        return workerEntityService.delete();}
 
 }

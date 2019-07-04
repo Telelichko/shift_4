@@ -11,6 +11,7 @@ import ru.cft.starterkit.repository.WorkerEntityRepository;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
@@ -18,14 +19,23 @@ public class WorkerEntityRepositoryImpl implements WorkerEntityRepository {
 
     private static final Logger log = LoggerFactory.getLogger(WorkerEntityRepositoryImpl.class);
 
-    private final AtomicLong idCounter = new AtomicLong();
+    private final AtomicInteger idCounter = new AtomicInteger();
 
     private final Map<Long, WorkerEntity> storage = new ConcurrentHashMap<>();
 
     @Override
     public WorkerEntity add(WorkerEntity workerEntity) {
         workerEntity.setId(idCounter.incrementAndGet());
-        storage.put(workerEntity.getId(), workerEntity);
+        storage.put((long)workerEntity.getId(), workerEntity);
+
+        log.info("Added new worker entity to storage: {}", workerEntity);
+        return workerEntity;
+    }
+
+    @Override
+    public WorkerEntity delete(WorkerEntity workerEntity) {
+        workerEntity.getId(idCounter.incrementAndGet());
+        storage.put((long) workerEntity.getId(), workerEntity);
 
         log.info("Added new worker entity to storage: {}", workerEntity);
         return workerEntity;

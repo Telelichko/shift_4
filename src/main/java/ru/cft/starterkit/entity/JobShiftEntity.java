@@ -10,8 +10,9 @@ public class JobShiftEntity {
 
     private Integer id;
     private Date date;
+    private Integer workerID;
     private String shiftNumber;
-    private Boolean editableDay;
+    private Boolean status;
 
     public JobShiftEntity() {
     }
@@ -35,6 +36,14 @@ public class JobShiftEntity {
         this.date = date;
     }
 
+    public Integer getWorkerID() {
+        return workerID;
+    }
+
+    public void setWorkerID(Integer workerID) {
+        this.workerID = workerID;
+    }
+
     public String getShiftNumber() {
         return shiftNumber;
     }
@@ -43,12 +52,12 @@ public class JobShiftEntity {
         this.shiftNumber = shiftNumber;
     }
 
-    public Boolean getEditableDay() {
-        return editableDay;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setEditableDay(Boolean editableDay) {
-        this.editableDay = editableDay;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public UUID getBaz() {
@@ -67,13 +76,13 @@ public class JobShiftEntity {
         return Objects.equals(id, that.id) &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(shiftNumber, that.shiftNumber) &&
-                Objects.equals(editableDay, that.editableDay) &&
+                Objects.equals(status, that.status) &&
                 Objects.equals(baz, that.baz);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, shiftNumber, editableDay, baz);
+        return Objects.hash(id, date, shiftNumber, status, baz);
     }
 
     @Override
@@ -82,7 +91,7 @@ public class JobShiftEntity {
                 "id=" + id +
                 ", date=" + date +
                 ", shiftNumber='" + shiftNumber + '\'' +
-                ", editableDay=" + editableDay +
+                ", status=" + status +
                 ", baz=" + baz +
                 '}';
     }
