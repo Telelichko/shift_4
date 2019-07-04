@@ -11,6 +11,7 @@ import ru.cft.starterkit.repository.JobShiftEntityRepository;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
@@ -18,14 +19,14 @@ public class JobShiftEntityRepositoryImpl implements JobShiftEntityRepository {
 
     private static final Logger log = LoggerFactory.getLogger(JobShiftEntityRepositoryImpl.class);
 
-    private final AtomicLong idCounter = new AtomicLong();
+    private final AtomicInteger idCounter = new AtomicInteger();
 
     private final Map<Long, JobShiftEntity> storage = new ConcurrentHashMap<>();
 
     @Override
     public JobShiftEntity add(JobShiftEntity jobShiftEntity) {
         jobShiftEntity.setId(idCounter.incrementAndGet());
-        storage.put(jobShiftEntity.getId(), jobShiftEntity);
+        storage.put((long)jobShiftEntity.getId(), jobShiftEntity);
 
         log.info("Added new job entity to storage: {}", jobShiftEntity);
         return jobShiftEntity;

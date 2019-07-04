@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class JobShiftEntity {
 
-    private Long id;
+    private Integer id;
     private Date date;
     private String shiftNumber;
     private Boolean editableDay;
@@ -19,11 +19,11 @@ public class JobShiftEntity {
     @JsonIgnore
     private UUID baz;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
