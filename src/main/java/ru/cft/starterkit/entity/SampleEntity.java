@@ -9,6 +9,14 @@ public class SampleEntity {
 
     private Long id;
 
+    public SampleEntity() {
+    }
+
+    public SampleEntity(String foo, Double bar) {
+        this.foo = foo;
+        this.bar = bar;
+    }
+
     private String foo;
 
     private Double bar;
@@ -60,9 +68,9 @@ public class SampleEntity {
         if (!(o instanceof SampleEntity)) return false;
         SampleEntity entity = (SampleEntity) o;
         return Objects.equals(id, entity.id) &&
-               Objects.equals(foo, entity.foo) &&
-               Objects.equals(bar, entity.bar) &&
-               Objects.equals(baz, entity.baz);
+                Objects.equals(foo, entity.foo) &&
+                Objects.equals(bar, entity.bar) &&
+                Objects.equals(baz, entity.baz);
     }
 
     @Override
@@ -73,11 +81,11 @@ public class SampleEntity {
     @Override
     public String toString() {
         return "SampleEntity{" +
-               "id=" + id +
-               ", foo='" + foo + '\'' +
-               ", bar=" + bar +
-               ", baz=" + baz +
-               '}';
+                "id=" + id +
+                ", foo='" + foo + '\'' +
+                ", bar=" + bar +
+                ", baz=" + baz +
+                '}';
     }
 
 }

@@ -8,7 +8,9 @@ import ru.cft.starterkit.entity.SampleEntity;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.service.SampleEntityService;
 
-@RestController
+import java.util.Collection;
+
+@RestController // ("/tests")
 public class SampleEntityController {
 
     private final SampleEntityService sampleEntityService;
@@ -18,17 +20,15 @@ public class SampleEntityController {
         this.sampleEntityService = sampleEntityService;
     }
 
-    @RequestMapping(
+    @RequestMapping( // действие 1_1
             method = RequestMethod.POST,
             path = "/sample",
-            consumes = "application/x-www-form-urlencoded",
+            consumes = "application/json", //x-www-form-urlencoded", 1 действ
             produces = "application/json"
     )
-    public SampleEntity add(
-            @RequestParam(name = "foo") String foo,
-            @RequestParam(name = "bar", defaultValue = "1.1") Double bar
-    ) {
-        return sampleEntityService.add(foo, bar);
+    public SampleEntity add(@RequestBody SampleEntity sampleEntity)   // Что приходит от протокола Ltqcnd 1_2
+             {
+        return sampleEntityService.add(sampleEntity);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/sample/{id}", produces = "application/json")
@@ -39,5 +39,9 @@ public class SampleEntityController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/samples", produces = "application/json")
+    public Collection<SampleEntity> get(){
+        return sampleEntityService.get();}
 
 }

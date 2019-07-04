@@ -7,6 +7,7 @@ import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.SampleEntityRepository;
 import ru.cft.starterkit.service.SampleEntityService;
 
+import java.util.Collection;
 import java.util.UUID;
 
 @Service
@@ -27,6 +28,17 @@ public class SampleEntityServiceImpl implements SampleEntityService {
     @Override
     public SampleEntity get(Long id) throws ObjectNotFoundException {
         return sampleEntityRepository.get(id);
+    }
+
+    @Override
+    public Collection<SampleEntity> get() {
+        return sampleEntityRepository.get();
+    }
+
+    @Override
+    public SampleEntity add(SampleEntity sampleEntity) {
+        sampleEntity.setBaz(UUID.randomUUID());
+        return sampleEntityRepository.add(sampleEntity);
     }
 
 }
