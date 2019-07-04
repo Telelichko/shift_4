@@ -45,7 +45,6 @@ public class WorkerEntityServiceImpl implements WorkerEntityService {
 
     @Override
     public WorkerEntity delete(WorkerEntity workerEntity) {
-//        workerEntity.setBaz(UUID.randomUUID());
         return workerEntityRepository.delete(workerEntity);
     }
 

@@ -10,11 +10,7 @@ public interface WorkerEntityRepository {
 
     WorkerEntity get(Long id) throws ObjectNotFoundException;
 
-//    WorkerEntity delete(Long id) throws ObjectNotFoundException;
-
     Collection<WorkerEntity> get();
 
     WorkerEntity delete(WorkerEntity workerEntity);
-
-//    WorkerEntity delete(WorkerEntity workerEntity);
 }

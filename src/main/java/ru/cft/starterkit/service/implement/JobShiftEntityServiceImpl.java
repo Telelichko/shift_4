@@ -42,4 +42,9 @@ public class JobShiftEntityServiceImpl implements JobShiftEntityService {
         return jobShiftEntityRepository.add(jobShiftEntity);
     }
 
+    @Override
+    public JobShiftEntity delete(JobShiftEntity workerEntity) {
+        return jobShiftEntityRepository.delete(workerEntity);
+    }
+
 }

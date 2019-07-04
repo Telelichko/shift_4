@@ -55,6 +55,4 @@ public class WorkerEntityController {
         }
     }
 
-//        return workerEntityService.delete(workerEntityService.get(id));}
-
 }

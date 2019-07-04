@@ -46,6 +46,14 @@ public class JobShiftEntityRepositoryImpl implements JobShiftEntityRepository {
     }
 
     @Override
+    public JobShiftEntity delete(JobShiftEntity jobShiftEntity) {
+        storage.remove(jobShiftEntity.getId(), jobShiftEntity);
+
+        log.info("Worker entity deleted from storage: {}", jobShiftEntity);
+        return jobShiftEntity;
+    }
+
+    @Override
     public Collection<JobShiftEntity> get() {
         return storage.values();
     }

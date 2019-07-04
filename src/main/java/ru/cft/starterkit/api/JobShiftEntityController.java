@@ -45,4 +45,13 @@ public class JobShiftEntityController {
     public Collection<JobShiftEntity> get(){
         return jobShiftEntityService.get();}
 
+    @RequestMapping(method = RequestMethod.DELETE, path = "job/delete/{id}", produces = "application/json")
+    public JobShiftEntity delete(@PathVariable(name = "id") Long id) {
+        try {
+            return jobShiftEntityService.delete(jobShiftEntityService.get(id));
+        } catch (ObjectNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+        }
+    }
+
 }

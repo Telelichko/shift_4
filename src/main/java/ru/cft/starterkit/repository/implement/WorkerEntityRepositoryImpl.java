@@ -19,14 +19,14 @@ public class WorkerEntityRepositoryImpl implements WorkerEntityRepository {
 
     private static final Logger log = LoggerFactory.getLogger(WorkerEntityRepositoryImpl.class);
 
-    private final AtomicLong idCounter = new AtomicLong();
+    private final AtomicInteger idCounter = new AtomicInteger();
 
     private final Map<Long, WorkerEntity> storage = new ConcurrentHashMap<>();
 
     @Override
     public WorkerEntity add(WorkerEntity workerEntity) {
         workerEntity.setId(idCounter.incrementAndGet());
-        storage.remove(workerEntity.getId(), workerEntity);
+        storage.put((long) workerEntity.getId(), workerEntity);
 
         log.info("Added new worker entity to storage: {}", workerEntity);
         return workerEntity;
@@ -34,7 +34,6 @@ public class WorkerEntityRepositoryImpl implements WorkerEntityRepository {
 
     @Override
     public WorkerEntity delete(WorkerEntity workerEntity) {
-        workerEntity.getId(idCounter.get());
         storage.remove(workerEntity.getId(), workerEntity);
 
         log.info("Worker entity deleted from storage: {}", workerEntity);
