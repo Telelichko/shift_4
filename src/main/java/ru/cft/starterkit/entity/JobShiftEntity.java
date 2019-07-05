@@ -9,7 +9,7 @@ public class JobShiftEntity {
 
     private Integer id;
     private Long date;
-    private Integer workerID;
+    private Integer workerId;
     private String status;
 
     public JobShiftEntity() {
@@ -34,12 +34,12 @@ public class JobShiftEntity {
         this.date = date;
     }
 
-    public Integer getWorkerID() {
-        return workerID;
+    public Integer getWorkerId() {
+        return workerId;
     }
 
-    public void setWorkerID(Integer workerID) {
-        this.workerID = workerID;
+    public void setWorkerId(Integer workerId) {
+        this.workerId = workerId;
     }
 
     public String getStatus() {
@@ -65,14 +65,14 @@ public class JobShiftEntity {
         JobShiftEntity that = (JobShiftEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(date, that.date) &&
-                Objects.equals(workerID, that.workerID) &&
+                Objects.equals(workerId, that.workerId) &&
                 Objects.equals(status, that.status) &&
                 Objects.equals(baz, that.baz);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, workerID, status, baz);
+        return Objects.hash(id, date, workerId, status, baz);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class JobShiftEntity {
         return "JobShiftEntity{" +
                 "id=" + id +
                 ", date=" + date +
-                ", workerID=" + workerID +
+                ", workerId=" + workerId +
                 ", status='" + status + '\'' +
                 ", baz=" + baz +
                 '}';
