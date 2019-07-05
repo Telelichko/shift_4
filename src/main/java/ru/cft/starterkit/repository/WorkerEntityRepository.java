@@ -12,5 +12,5 @@ public interface WorkerEntityRepository {
 
     Collection<WorkerEntity> get();
 
-    WorkerEntity delete(WorkerEntity workerEntity);
+    WorkerEntity delete(long id);
 }

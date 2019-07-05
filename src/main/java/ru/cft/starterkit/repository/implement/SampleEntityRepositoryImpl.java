@@ -3,12 +3,15 @@ package ru.cft.starterkit.repository.implement;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.cft.starterkit.entity.SampleEntity;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.SampleEntityRepository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,8 +26,6 @@ public class SampleEntityRepositoryImpl implements SampleEntityRepository {
 
     private final Map<Long, SampleEntity> storage = new ConcurrentHashMap<>();
 
-    private final ObjectMapper objectMapper;
-
     @Override
     public SampleEntity add(SampleEntity sampleEntity) {
         sampleEntity.setId(idCounter.incrementAndGet());
@@ -32,11 +33,6 @@ public class SampleEntityRepositoryImpl implements SampleEntityRepository {
 
         log.info("Added new sample entity to storage: {}", sampleEntity);
         return sampleEntity;
-    }
-
-    @Autowired
-    public SampleEntityRepositoryImpl(ObjectMapper objectMapper) {
-        this.objectMapper = new ObjectMapper();
     }
 
     @Override
@@ -55,6 +51,33 @@ public class SampleEntityRepositoryImpl implements SampleEntityRepository {
     @Override
     public Collection<SampleEntity> get() {
         return storage.values();
+    }
+
+    @PostConstruct
+    private void initStorage() {
+        try {
+            SampleEntity[] entriesFromFile = objectMapper.readValue(storageFile, SampleEntity[].class);
+            for (SampleEntity sampleEntity : entriesFromFile) {
+                storage.put(sampleEntity.getId(), sampleEntity);
+                if (idCounter.get() < sampleEntity.getId()) {
+                    idCounter.set(sampleEntity.getId());
+                }
+            }
+            log.info("Loaded {} entities to storage. Id counter set to {}.", storage.size(), idCounter.get());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PreDestroy
+    private void shutdown() {
+        log.info("Start shutdown!");
+        try {
+            objectMapper.writeValue(storageFile, storage.values());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        log.info("Shutdown is ready!");
     }
 
 }

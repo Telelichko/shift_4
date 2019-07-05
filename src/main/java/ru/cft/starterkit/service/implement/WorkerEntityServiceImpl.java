@@ -44,8 +44,8 @@ public class WorkerEntityServiceImpl implements WorkerEntityService {
     }
 
     @Override
-    public WorkerEntity delete(WorkerEntity workerEntity) {
-        return workerEntityRepository.delete(workerEntity);
+    public WorkerEntity delete(long id) {
+        return workerEntityRepository.delete(id);
     }
 
 }
