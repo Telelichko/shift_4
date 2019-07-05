@@ -12,7 +12,11 @@ public interface JobShiftEntityRepository {
 
     JobShiftEntity get(Long id) throws ObjectNotFoundException;
 
+    JobShiftEntity update(JobShiftEntity jobShiftEntity);
+
     Collection<JobShiftEntity> get();
 
     JobShiftEntity delete(long id);
+
+//    JobShiftEntity update(long id);
 }

@@ -2,8 +2,6 @@ package ru.cft.starterkit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -12,7 +10,6 @@ public class JobShiftEntity {
     private Integer id;
     private Long date;
     private Integer workerID;
-    private String category;
     private String status;
 
     public JobShiftEntity() {
@@ -45,14 +42,6 @@ public class JobShiftEntity {
         this.workerID = workerID;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -76,14 +65,14 @@ public class JobShiftEntity {
         JobShiftEntity that = (JobShiftEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(date, that.date) &&
-                Objects.equals(category, that.category) &&
+                Objects.equals(workerID, that.workerID) &&
                 Objects.equals(status, that.status) &&
                 Objects.equals(baz, that.baz);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, category, status, baz);
+        return Objects.hash(id, date, workerID, status, baz);
     }
 
     @Override
@@ -91,8 +80,8 @@ public class JobShiftEntity {
         return "JobShiftEntity{" +
                 "id=" + id +
                 ", date=" + date +
-                ", category='" + category + '\'' +
-                ", status=" + status +
+                ", workerID=" + workerID +
+                ", status='" + status + '\'' +
                 ", baz=" + baz +
                 '}';
     }

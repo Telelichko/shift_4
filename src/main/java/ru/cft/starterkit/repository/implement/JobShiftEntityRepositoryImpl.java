@@ -68,6 +68,21 @@ public class JobShiftEntityRepositoryImpl implements JobShiftEntityRepository {
     }
 
     @Override
+    public JobShiftEntity update(JobShiftEntity jobShiftEntity) {
+//        jobShiftEntity.setId(idCounter.incrementAndGet());
+        storage.put((long)jobShiftEntity.getId(), jobShiftEntity);
+
+        log.info("Edit job entity to storage: {}", jobShiftEntity);
+        return jobShiftEntity;
+    }
+
+//    @Override
+//    public JobShiftEntity update(long id) {
+//        log.info("Job Shift entity updated from storage: {}", id);
+//        return storage.remove(id);
+//    }
+
+    @Override
     public Collection<JobShiftEntity> get() {
         return storage.values();
     }

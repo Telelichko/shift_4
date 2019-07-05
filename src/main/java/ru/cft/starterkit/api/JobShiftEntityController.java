@@ -50,4 +50,9 @@ public class JobShiftEntityController {
         return jobShiftEntityService.delete(id);
     }
 
+    @RequestMapping(method = RequestMethod.PATCH, path = "shift/{id}/edit", produces = "application/json")
+    public JobShiftEntity update(@RequestBody JobShiftEntity jobShiftEntity, @PathVariable(name = "id") Long id) {
+        return jobShiftEntityService.update(jobShiftEntity);
+    }
+
 }
