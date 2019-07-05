@@ -23,7 +23,7 @@ public class JobShiftEntityController {
 
     @RequestMapping( // действие 1_1
             method = RequestMethod.POST,
-            path = "/job",
+            path = "/shift",
             consumes = "application/json", //x-www-form-urlencoded", 1 действ
             produces = "application/json"
     )
@@ -32,7 +32,7 @@ public class JobShiftEntityController {
         return jobShiftEntityService.add(jobShiftEntity);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/job/{id}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/shift/{id}", produces = "application/json")
     public JobShiftEntity get(@PathVariable(name = "id") Long id) {
         try {
             return jobShiftEntityService.get(id);
@@ -41,11 +41,11 @@ public class JobShiftEntityController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/jobs", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/shifts", produces = "application/json")
     public Collection<JobShiftEntity> get(){
         return jobShiftEntityService.get();}
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "job/delete/{id}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.DELETE, path = "shift/delete/{id}", produces = "application/json")
     public JobShiftEntity delete(@PathVariable(name = "id") Long id) {
         try {
             return jobShiftEntityService.delete(jobShiftEntityService.get(id));

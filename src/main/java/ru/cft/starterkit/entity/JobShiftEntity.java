@@ -11,8 +11,8 @@ public class JobShiftEntity {
     private Integer id;
     private Date date;
     private Integer workerID;
-    private String shiftNumber;
-    private Boolean status;
+    private String category;
+    private String status;
 
     public JobShiftEntity() {
     }
@@ -44,19 +44,19 @@ public class JobShiftEntity {
         this.workerID = workerID;
     }
 
-    public String getShiftNumber() {
-        return shiftNumber;
+    public String getCategory() {
+        return category;
     }
 
-    public void setShiftNumber(String shiftNumber) {
-        this.shiftNumber = shiftNumber;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -75,14 +75,14 @@ public class JobShiftEntity {
         JobShiftEntity that = (JobShiftEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(date, that.date) &&
-                Objects.equals(shiftNumber, that.shiftNumber) &&
+                Objects.equals(category, that.category) &&
                 Objects.equals(status, that.status) &&
                 Objects.equals(baz, that.baz);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, shiftNumber, status, baz);
+        return Objects.hash(id, date, category, status, baz);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class JobShiftEntity {
         return "JobShiftEntity{" +
                 "id=" + id +
                 ", date=" + date +
-                ", shiftNumber='" + shiftNumber + '\'' +
+                ", category='" + category + '\'' +
                 ", status=" + status +
                 ", baz=" + baz +
                 '}';
