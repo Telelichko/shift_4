@@ -42,6 +42,7 @@ public class WorkerEntityController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:9000")
     @RequestMapping(method = RequestMethod.GET, path = "/workers", produces = "application/json")
     public Collection<WorkerEntity> get(){
         return workerEntityService.get();}
