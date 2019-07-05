@@ -13,5 +13,5 @@ public interface SampleEntityService {
 
     Collection<SampleEntity> get();
 
-    SampleEntity add(SampleEntity sampleEntity);
+    //SampleEntity add(SampleEntity sampleEntity);
 }

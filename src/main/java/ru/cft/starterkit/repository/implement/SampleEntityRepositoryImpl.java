@@ -1,7 +1,9 @@
 package ru.cft.starterkit.repository.implement;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.cft.starterkit.entity.SampleEntity;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
@@ -21,6 +23,8 @@ public class SampleEntityRepositoryImpl implements SampleEntityRepository {
 
     private final Map<Long, SampleEntity> storage = new ConcurrentHashMap<>();
 
+    private final ObjectMapper objectMapper;
+
     @Override
     public SampleEntity add(SampleEntity sampleEntity) {
         sampleEntity.setId(idCounter.incrementAndGet());
@@ -28,6 +32,11 @@ public class SampleEntityRepositoryImpl implements SampleEntityRepository {
 
         log.info("Added new sample entity to storage: {}", sampleEntity);
         return sampleEntity;
+    }
+
+    @Autowired
+    public SampleEntityRepositoryImpl(ObjectMapper objectMapper) {
+        this.objectMapper = new ObjectMapper();
     }
 
     @Override
