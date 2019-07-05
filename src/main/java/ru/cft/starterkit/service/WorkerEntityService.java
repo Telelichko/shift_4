@@ -14,5 +14,5 @@ public interface WorkerEntityService {
 
     WorkerEntity add(WorkerEntity workerEntity);
 
-    WorkerEntity delete(WorkerEntity workerEntity);
+    WorkerEntity delete(long id);
 }

@@ -48,11 +48,9 @@ public class WorkerEntityRepositoryImpl implements WorkerEntityRepository {
     }
 
     @Override
-    public WorkerEntity delete(WorkerEntity workerEntity) {
-        storage.remove(workerEntity.getId(), workerEntity);
-
-        log.info("Worker entity deleted from storage: {}", workerEntity);
-        return workerEntity;
+    public WorkerEntity delete(long id) {
+        log.info("Worker entity deleted from storage: {}", id);
+        return storage.remove(id);
     }
 
     @Override

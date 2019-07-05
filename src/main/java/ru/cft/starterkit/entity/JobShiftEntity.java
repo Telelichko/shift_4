@@ -10,7 +10,7 @@ import java.util.UUID;
 public class JobShiftEntity {
 
     private Integer id;
-    private Timestamp date;
+    private Long date;
     private Integer workerID;
     private String category;
     private String status;
@@ -29,11 +29,11 @@ public class JobShiftEntity {
         this.id = id;
     }
 
-    public Timestamp getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 

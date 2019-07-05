@@ -47,11 +47,7 @@ public class JobShiftEntityController {
 
     @RequestMapping(method = RequestMethod.DELETE, path = "shift/delete/{id}", produces = "application/json")
     public JobShiftEntity delete(@PathVariable(name = "id") Long id) {
-        try {
-            return jobShiftEntityService.delete(jobShiftEntityService.get(id));
-        } catch (ObjectNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
-        }
+        return jobShiftEntityService.delete(id);
     }
 
 }

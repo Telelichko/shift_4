@@ -14,5 +14,5 @@ public interface JobShiftEntityRepository {
 
     Collection<JobShiftEntity> get();
 
-    JobShiftEntity delete(JobShiftEntity jobShiftEntity);
+    JobShiftEntity delete(long id);
 }

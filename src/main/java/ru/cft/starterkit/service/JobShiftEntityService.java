@@ -14,5 +14,5 @@ public interface JobShiftEntityService {
 
     JobShiftEntity add(JobShiftEntity jobShiftEntity);
 
-    JobShiftEntity delete(JobShiftEntity jobShiftEntity);
+    JobShiftEntity delete(long id);
 }

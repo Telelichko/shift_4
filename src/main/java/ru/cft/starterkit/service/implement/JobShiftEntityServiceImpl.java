@@ -21,11 +21,6 @@ public class JobShiftEntityServiceImpl implements JobShiftEntityService {
         this.jobShiftEntityRepository = jobShiftEntityRepository;
     }
 
-//    @Override
-//    public JobShiftEntity add(String foo, Double bar) {
-//        return jobShiftEntityRepository.add(new JobShiftEntity(foo, bar, UUID.randomUUID()));
-//    }
-
     @Override
     public JobShiftEntity get(Long id) throws ObjectNotFoundException {
         return jobShiftEntityRepository.get(id);
@@ -43,8 +38,8 @@ public class JobShiftEntityServiceImpl implements JobShiftEntityService {
     }
 
     @Override
-    public JobShiftEntity delete(JobShiftEntity workerEntity) {
-        return jobShiftEntityRepository.delete(workerEntity);
+    public JobShiftEntity delete(long id) {
+        return jobShiftEntityRepository.delete(id);
     }
 
 }

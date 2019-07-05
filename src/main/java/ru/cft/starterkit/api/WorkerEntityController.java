@@ -48,11 +48,7 @@ public class WorkerEntityController {
 
     @RequestMapping(method = RequestMethod.DELETE, path = "worker/delete/{id}", produces = "application/json")
     public WorkerEntity delete(@PathVariable(name = "id") Long id) {
-        try {
-            return workerEntityService.delete(workerEntityService.get(id));
-        } catch (ObjectNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
-        }
+        return workerEntityService.delete(id);
     }
 
 }
