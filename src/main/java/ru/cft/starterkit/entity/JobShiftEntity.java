@@ -2,6 +2,7 @@ package ru.cft.starterkit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -9,7 +10,7 @@ import java.util.UUID;
 public class JobShiftEntity {
 
     private Integer id;
-    private Date date;
+    private Timestamp date;
     private Integer workerID;
     private String category;
     private String status;
@@ -28,11 +29,11 @@ public class JobShiftEntity {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

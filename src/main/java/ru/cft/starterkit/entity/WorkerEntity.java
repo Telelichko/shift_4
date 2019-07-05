@@ -9,7 +9,7 @@ public class WorkerEntity {
     private Integer id;
     private String workerName;
     private String category;
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     public WorkerEntity() {
     }
@@ -40,11 +40,11 @@ public class WorkerEntity {
         this.category = category;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
